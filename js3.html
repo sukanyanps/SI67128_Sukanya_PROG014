@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop JavaScript 3</title>
+</head>
+<body>
+    <!-- ข้อ 1 -->
+    <p id="dayColor"></p>
+    <script>
+        const myObj1 = {Sunday:["ส้ม","แดง"], Monday:"ขาว", Tuesday:["ชมพู","ม่วง","แดง"], Wednesday:"เขียว", Thursday:"เหลือง",Friday:"น้ำเงิน",Saturday:"ดำ"};
+        document.getElementById("dayColor").innerHTML = myObj1.Sunday + " / " + myObj1.Monday;
+    </script>
+
+    <!-- ข้อ 2 -->
+    <p id="member"></p>
+    <script>
+        const myObj2 = {
+            manager:{
+                name : "malee", 
+                lastname : "def", 
+                age : 10, 
+                salary : 10000
+            },
+            employee: [
+                {
+                    name : "mana", 
+                    lastname : "klm", 
+                    age : 10, 
+                    salary : 10000
+                },
+                {
+                    name : "manee", 
+                    lastname : "def", 
+                    age : 10, 
+                    salary : 10000
+                },
+                {
+                    name : "manon", 
+                    lastname : "def", 
+                    age : 10, 
+                    salary : 10000
+                },
+                {
+                    name : "mama", 
+                    lastname : "def", 
+                    age : 10, 
+                    salary : 10000
+                },
+                {
+                    name : "maima", 
+                    lastname : "def", 
+                    age : 10, 
+                    salary : 10000
+                },
+            ]
+        }
+        document.getElementById("member").innerHTML = JSON.stringify(myObj2.manager);
+    </script>
+</body>
+</html>

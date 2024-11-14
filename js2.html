@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop JavaScript 2</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form">
+            <h1 style="text-align: center;">Form</h1>
+            <div class="form-control">
+                <label for="">ชื่อ</label>
+                <input type="text" name="fname" required id="firstName"><br>
+            </div>
+            <div class="form-control">
+                <label for="">นามสกุล</label>
+                <input type="text" name="fname" required id="lastName"><br>
+            </div>
+            <div class="form-control">
+                <label for="">ชื่อเล่น</label>
+                <input type="text" name="fname" required id="nickName"><br>
+            </div>
+            <div class="form-control">
+                <label for="">เบอร์โทรศัพท์</label>
+                <input type="text" name="fname" required id="phone"><br>
+            </div>
+            <div class="form-control">
+                <label for="">เพศ</label>
+                <input type="text" name="fname" required id="gender"><br>
+            </div>
+            <div class="form-control">
+                <label for="">อายุ</label>
+                <input type="text" name="fname" required id="age">
+            </div>
+            <button type="button" onclick="myFunction()">Save</button>
+            <p id="save"></p>
+          </form>
+    </div>
+
+    <script>
+        function myFunction() {
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const nickName = document.getElementById("nickName").value;
+            const phone = document.getElementById("phone").value;
+            const gender = document.getElementById("gender").value;
+            const age = document.getElementById("age").value;
+
+            const text = `ชื่อ: ${firstName} นามสกุล: ${lastName} ชื่อเล่น: ${nickName} เบอร์โทรศัพท์: ${phone} เพศ: ${gender} อายุ: ${age}`;
+
+            document.getElementById("save").innerHTML = text;
+        }
+
+        const inputs = document.querySelectorAll("input");
+
+        inputs.forEach(function(input) {
+            input.addEventListener("mouseover", mouseOver);
+            input.addEventListener("mouseout", mouseOut);
+        });
+
+        function mouseOver() {
+            this.style.color = "red";
+        }
+
+        function mouseOut() {
+            this.style.color = "black";
+        }
+
+    </script>
+      
+</body>
+</html>
