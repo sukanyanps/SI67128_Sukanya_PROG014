@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/bootstrap.min.css">
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row row p-4 pb-lg-5 pe-lg-0 pt-lg-5 align-items-center">
+            <div class="col-md-4">
+                <p>
+                    <table>
+                        <tr>
+                            <th>School Name:</th>
+                            <th>Hogwarts</th>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <table>
+                        <tr>
+                            <th>type:</th>
+                            <th>wizardy</th>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <table>
+                        <tr>
+                            <th>Establishment:</th>
+                            <th>Highlands of Scotland</th>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+
+        <div class="container my-5" style="text-align: center;">
+            <form action="">
+                <label for="houseSelect"><b>House: </b></label>
+                <select  id="houseSelect" onchange="filterByHouse()">
+                    <option value="">All</option>
+                </select>
+            </form>
+        </div>
+
+        <div class="container" style="text-align: center;">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>House</th>
+                        <th>Class</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTable">
+                </tbody>
+            </table>
+    
+            <button onclick="clearTable()">Clear</button>
+            <button onclick="refreshTable()">Refresh</button>
+        </div>
+    </div>
+    <script>
+        const studentData ={
+            "name": "Hogwarts",
+            "students": [
+                {"fname": "Harry", 
+                "lname": "Potter", 
+                "houses": "Gryffindor", 
+                "class": "3",
+                "age": "15"
+                },
+                {"fname": "Hermione", 
+                "lname": "Gramger", 
+                "houses": "Gryffindor", 
+                "class": "3",
+                "age": "15"
+                },
+                {"fname": "Ronald", 
+                "lname": "Weasley", 
+                "houses": "Ravenclaw", 
+                "class": "3",
+                "age": "15"
+                },
+                {"fname": "Draco", 
+                "lname": "Malfoy", 
+                "houses": "Slytherin", 
+                "class": "4",
+                "age": "16"
+                },
+                {"fname": "Teddy", 
+                "lname": "Lupin", 
+                "houses": "Hufflepuff", 
+                "class": "5",
+                "age": "17"
+                },
+                {"fname": "Susan", 
+                "lname": "Bones", 
+                "houses": "Hufflepuff", 
+                "class": "2",
+                "age": "14"
+                },
+                {"fname": "Severus", 
+                "lname": "Snape", 
+                "houses": "Slytherin", 
+                "class": "6",
+                "age": "18"
+                },
+                {"fname": "Albus", 
+                "lname": "Dumbledore", 
+                "houses": "Ravenclaw", 
+                "class": "6",
+                "age": "18"
+                },
+                {"fname": "Neville", 
+                "lname": "Longbottom", 
+                "houses": "Gryffindor", 
+                "class": "6",
+                "age": "17"
+                },
+            ]
+        }
+
+        const houseData = ["Gryffindor", "Slytherin", "Ravenclaw", "Hufflepuff"];
+
+        window.onload = function() {
+        var houseSelect = document.getElementById("houseSelect");
+            for (var x in houseData) {
+                houseSelect.options[houseSelect.options.length] = new Option(houseData[x], houseData[x]);
+            }
+        }       
+        
+        function displayStudents(students) {
+            const tableBody = document.getElementById("studentTable");
+            tableBody.innerHTML = "";
+            students.forEach(student => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${student.fname}</td>
+                    <td>${student.lname}</td>
+                    <td>${student.houses}</td>
+                    <td>${student.age}</td>
+                    <td>${student.class}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function filterByHouse() {
+            const selectedHouse = document.getElementById("houseSelect").value;
+            if (selectedHouse === "") {
+                displayStudents(studentData.students);
+            } else {
+                const filteredStudents = studentData.students.filter(student => student.houses === selectedHouse);
+                displayStudents(filteredStudents);
+            }
+        }
+
+        function clearTable() {
+            const tableBody = document.getElementById("studentTable");
+            tableBody.innerHTML = "";
+        }
+
+        function refreshTable() {
+            displayStudents(studentData.students);
+        }
+
+        populateDropdown();
+        displayStudents(studentData.students);
+    </script>
+</body>
+</html>
